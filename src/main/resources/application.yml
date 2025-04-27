@@ -1,0 +1,24 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      fail-fast: true
+      server:
+        git:
+          uri: https://bitbucket.edme.pro/scm/japp/kadamov_ny_dec1_config_repo.git
+          default-label: master
+          clone-on-start: true
+          username: ${CONFIG_USERNAME}
+          password: ${CONFIG_PASSWORD}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8001/eureka/
+  instance:
+    prefer-ip-address: true
